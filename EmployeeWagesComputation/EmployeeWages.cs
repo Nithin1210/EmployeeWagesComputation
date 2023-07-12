@@ -22,7 +22,7 @@ namespace EmployeeWagesComputation
         }
         public void CalculateExpWage()
         {
-            for (int i = 0; i < total_working_day; i++)
+            for (int i = 0; i < total_working_day && emphrs<total_working_day; i++)
             {
 
             
