@@ -9,7 +9,7 @@ namespace EmployeeWagesComputation
     internal class EmployeeWages
     {
         const int wage_per_hr = 20, full_day_hr = 8, part_day_hr = 4,
-            is_full_time = 8, is_part_time = 1;
+            is_full_time = 8, is_part_time = 1 , total_working_day=20;
         int totalExpWage = 0, emphrs = 0;
         Random random = new Random();
         public   void EmployeeAttendence()
@@ -22,24 +22,27 @@ namespace EmployeeWagesComputation
         }
         public void CalculateExpWage()
         {
-            int empCheck=random.Next(0, 3);
-            switch (empCheck) 
+            for (int i = 0; i < total_working_day; i++)
             {
-                case is_full_time:
-                    emphrs = full_day_hr;
-                    break;
-                case is_part_time:
-                    emphrs = part_day_hr;
-                    break;
-                default:
-                    emphrs = 0;
-                    break;
+
+            
+                int empCheck=random.Next(0, 3);
+                switch (empCheck)
+                {
+                    case is_full_time:
+                        emphrs += full_day_hr;
+                        break;
+                    case is_part_time:
+                        emphrs += part_day_hr;
+                        break;
+                    default:
+                        emphrs += 0;
+                        break;
+                }
 
             }
-            if (empCheck == is_part_time)
-            {
-                emphrs = part_day_hr;
-            }
+           
+            
             int totalEmpWage = wage_per_hr * emphrs;
             Console.WriteLine(totalEmpWage);
         }
