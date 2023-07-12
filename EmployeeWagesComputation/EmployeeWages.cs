@@ -22,10 +22,19 @@ namespace EmployeeWagesComputation
         }
         public void CalculateExpWage()
         {
-            int empCheck=random.Next(0, 2);
-            if (empCheck == is_full_time)
+            int empCheck=random.Next(0, 3);
+            switch (empCheck) 
             {
-                emphrs = full_day_hr;
+                case is_full_time:
+                    emphrs = full_day_hr;
+                    break;
+                case is_part_time:
+                    emphrs = part_day_hr;
+                    break;
+                default:
+                    emphrs = 0;
+                    break;
+
             }
             if (empCheck == is_part_time)
             {
