@@ -8,21 +8,31 @@ namespace EmployeeWagesComputation
 {
     internal class EmployeeWages
     {
-        const int wage_per_hr = 20, full_day_hr = 8;
-        public  void EmployeeAttendence()
+        const int wage_per_hr = 20, full_day_hr = 8, part_day_hr = 4,
+            is_full_time = 8, is_part_time = 1;
+        int totalExpWage = 0, emphrs = 0;
+        Random random = new Random();
+        public   void EmployeeAttendence()
         {
-            
-            Random random = new Random();
-            int expCheck = random.Next(0, 2);
-            if (expCheck == 0)
+            int empCheck = random.Next(0, 2);
+            if (empCheck == 0)
                 Console.WriteLine("Employee is present");
             else
                 Console.WriteLine("Absent");
         }
         public void CalculateExpWage()
         {
-            int dailyExpWage = wage_per_hr * full_day_hr;
-            Console.WriteLine(dailyExpWage);
+            int empCheck=random.Next(0, 2);
+            if (empCheck == is_full_time)
+            {
+                emphrs = full_day_hr;
+            }
+            if (empCheck == is_part_time)
+            {
+                emphrs = part_day_hr;
+            }
+            int totalEmpWage = wage_per_hr * emphrs;
+            Console.WriteLine(totalEmpWage);
         }
     }
 }
