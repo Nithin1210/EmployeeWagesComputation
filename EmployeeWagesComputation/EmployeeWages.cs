@@ -6,45 +6,55 @@ using System.Threading.Tasks;
 
 namespace EmployeeWagesComputation
 {
-    internal class EmployeeWages
+    public class EmployeeWages
     {
         const int wage_per_hr = 20, full_day_hr = 8, part_day_hr = 4,
-            is_full_time = 8, is_part_time = 1 , total_working_day=20;
+            is_full_time = 8, is_part_time = 1, total_working_day = 20;
         int totalExpWage = 0, emphrs = 0;
+        string companyname;
+        int wageperhr, total_Working_days, total_working_hrs;
         Random random = new Random();
-        public   void EmployeeAttendence()
+        public EmployeeWages(string companyname, int wageperhr, int total_Working_days, int total_working_hrs)
         {
-            int empCheck = random.Next(0, 2);
-            if (empCheck == 0)
-                Console.WriteLine("Employee is present");
-            else
-                Console.WriteLine("Absent");
+            this.companyname = companyname;
+            this.wageperhr = wageperhr;
+            this.total_Working_days = total_Working_days;
+            this.total_working_hrs = total_working_hrs;
         }
-        public void CalculateExpWage()
-        {
-            for (int i = 0; i < total_working_day && emphrs<total_working_day; i++)
+            public void EmployeeAttendence()
             {
-
-            
-                int empCheck=random.Next(0, 3);
-                switch (empCheck)
+                int empCheck = random.Next(0, 2);
+                if (empCheck == 0)
+                    Console.WriteLine("Employee is present");
+                else
+                    Console.WriteLine("Absent");
+            }
+            public void CalculateExpWage()
+            {
+                for (int i = 0; i < total_Working_days && emphrs < total_working_hrs; i++)
                 {
-                    case is_full_time:
-                        emphrs += full_day_hr;
-                        break;
-                    case is_part_time:
-                        emphrs += part_day_hr;
-                        break;
-                    default:
-                        emphrs += 0;
-                        break;
+
+
+                    int empCheck = random.Next(0, 3);
+                    switch (empCheck)
+                    {
+                        case is_full_time:
+                            emphrs += full_day_hr;
+                            break;
+                        case is_part_time:
+                            emphrs += part_day_hr;
+                            break;
+                        default:
+                            emphrs += 0;
+                            break;
+                    }
+
                 }
 
-            }
-           
-            
-            int totalEmpWage = wage_per_hr * emphrs;
-            Console.WriteLine(totalEmpWage);
+
+                int totalEmpWage = wageperhr * emphrs;
+                Console.WriteLine("Company name : " + companyname + "\nWage is :" + totalEmpWage);
         }
     }
 }
+

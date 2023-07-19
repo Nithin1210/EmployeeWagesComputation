@@ -6,7 +6,7 @@ namespace EmployeeWagesComputation
     {
         public static void Main(string[] args)
         {
-            EmployeeWages employeeWages = new EmployeeWages();
+            EmployeeWages employeeWages = new EmployeeWages("AutoMobile",10,20,30);
             employeeWages.EmployeeAttendence();
             employeeWages.CalculateExpWage();
         }
