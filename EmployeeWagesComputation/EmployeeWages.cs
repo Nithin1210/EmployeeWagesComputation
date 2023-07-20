@@ -8,12 +8,13 @@ namespace EmployeeWagesComputation
 {
     public class EmployeeWages
     {
-        const int wage_per_hr = 20, full_day_hr = 8, part_day_hr = 4,
-            is_full_time = 8, is_part_time = 1, total_working_day = 20;
-        int totalExpWage = 0, emphrs = 0;
+        const int wage_per_hr = 20, full_day_hr = 8, part_day_hr = 4, is_full_time = 8, is_part_time = 1, total_working_day = 20;
+        int totalExpWage = 0, emphrs = 0, wageperhr, total_Working_days, total_working_hrs;
         string companyname;
-        int wageperhr, total_Working_days, total_working_hrs;
+        
         Random random = new Random();
+
+
         public EmployeeWages(string companyname, int wageperhr, int total_Working_days, int total_working_hrs)
         {
             this.companyname = companyname;
@@ -29,32 +30,33 @@ namespace EmployeeWagesComputation
                 else
                     Console.WriteLine("Absent");
             }
-            public void CalculateExpWage()
+        public void CalculateExpWage()
+        {
+            for (int i = 0; i < total_Working_days && emphrs < total_working_hrs; i++)
             {
-                for (int i = 0; i < total_Working_days && emphrs < total_working_hrs; i++)
+
+
+                int empCheck = random.Next(0, 3);
+                switch (empCheck)
                 {
-
-
-                    int empCheck = random.Next(0, 3);
-                    switch (empCheck)
-                    {
-                        case is_full_time:
-                            emphrs += full_day_hr;
-                            break;
-                        case is_part_time:
-                            emphrs += part_day_hr;
-                            break;
-                        default:
-                            emphrs += 0;
-                            break;
-                    }
-
+                    case is_full_time:
+                        emphrs += full_day_hr;
+                        break;
+                    case is_part_time:
+                        emphrs += part_day_hr;
+                        break;
+                    default:
+                        emphrs += 0;
+                        break;
                 }
 
+            }
 
-                int totalEmpWage = wageperhr * emphrs;
-                Console.WriteLine("Company name : " + companyname + "\nWage is :" + totalEmpWage);
+            int totalEmpWage = wageperhr * emphrs;
+            Console.WriteLine("Company name : " + companyname + "\n TotalWage is :" + totalEmpWage);
         }
+
+
     }
 }
 
